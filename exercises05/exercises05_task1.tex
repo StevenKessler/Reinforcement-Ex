@@ -1,0 +1,54 @@
+\documentclass[11pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[german,english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=3cm]{geometry}
+\setlength\parindent{0pt}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\author{}
+\title{Reinforcement Learning Exercise}
+\subtitle{Exercises 05}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Temporal-difference methods}
+
+\vspace{0.5cm}
+\textbf{(a)}
+\begin{enumerate}
+\item Bruteforce: iterative value iteration $\rightarrow$ guarantees to converge $\rightarrow$ gives out desired values
+
+\item True value of each state: probability  of  terminating  on  the  right  if starting from that state\\
+We know $x_C = 0.5$ and can formulate the others as folllowed:
+\begin{align*}
+x_D &= p(\text{go to }C\text{ from }D) \times x_C + p(\text{go to }E\text{ from }E) \times x_E\\
+&= \dfrac{x_C + x_E}{2}\\
+x_A &= \dfrac{x_{\text{LeftBox}} + x_B}{2}\\
+x_B &= \dfrac{x_A + x_C}{2}\\
+x_E &= \dfrac{x_{\text{RightBox}} + x_D}{2}
+\end{align*}
+Solving the above linear equations gives the desired results.
+\end{enumerate}
+\vspace{0.2cm}
+\begin{itemize}
+\item[$\Rightarrow$] Method 2 is much easier $\rightarrow$ I assume method 2 was used
+\end{itemize}
+
+
+
+\vspace{0.5cm}
+\textbf{(b)}
+\begin{itemize}
+\item[] The action selection is taken with respect to an $\epsilon$-greedy algorithm, while the action value function update is determined using a different policy. So with Q-learning we improve a policy which is differnet from that used to generate the data. Hence it is a off-policy method.
+\end{itemize}
+
+
+
+
+
+\end{document}
